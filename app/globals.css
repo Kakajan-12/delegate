@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+.print-only {
+  display: none;
+}
+
 @media print {
   html, body {
     margin: 0 !important;
@@ -16,8 +20,8 @@
     height: 297mm;
   }
   body * { visibility: hidden; }
-  .print-area, .print-area * { visibility: visible; }
-  .print-area {
+  .print-only, .print-only * { visibility: visible; display: block !important; }
+  .print-only {
     position: absolute !important;
     top: 0 !important;
     left: 50% !important;
@@ -27,10 +31,10 @@
     width: 89mm !important;
     height: 130mm !important;
   }
-  .print-area > * {
+  .print-only > * {
     width: 89mm !important;
     height: 130mm !important;
     border: none !important;
   }
-  .no-print { display: none !important; }
+  .no-print, .no-print * { display: none !important; visibility: hidden !important; }
 }

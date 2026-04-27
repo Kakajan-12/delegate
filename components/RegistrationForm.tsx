@@ -13,6 +13,14 @@ export default function RegistrationForm() {
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [showPrint, setShowPrint] = useState(false);
+  const [printData, setPrintData] = useState<{
+    firstName: string;
+    lastName: string;
+    company: string;
+    phone: string;
+    email: string;
+  } | null>(null);
 
   function reset() {
     setFirstName("");
@@ -28,18 +36,62 @@ export default function RegistrationForm() {
       alert("Заполните имя и фамилию");
       return;
     }
+    const data = {
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      company: company.trim(),
+      phone: phone.trim(),
+      email: email.trim(),
+    };
     startTransition(async () => {
-      const { id } = await createParticipant({
-        firstName: firstName.trim(),
-        lastName: lastName.trim(),
-        company: company.trim(),
-        phone: phone.trim(),
-        email: email.trim(),
-      });
+      await createParticipant(data);
+      setPrintData(data);
+      setShowPrint(true);
       reset();
-      window.open(`/print/${id}`, "_blank");
       router.refresh();
     });
+  }
+
+  function handlePrint() {
+    window.print();
+  }
+
+  function handleBack() {
+    setShowPrint(false);
+    setPrintData(null);
+  }
+
+  if (showPrint && printData) {
+    return (
+        <>
+          <section className="bg-white rounded-lg border border-gray-200 p-6 no-print">
+            <div className="flex flex-col items-center gap-4">
+              <h2 className="text-lg font-medium">Готово к печати</h2>
+              <div className="bg-gray-50 p-4 rounded">
+                <Badge {...printData} />
+              </div>
+              <div className="flex gap-3 w-full">
+                <button
+                    onClick={handleBack}
+                    className="flex-1 border border-gray-300 text-gray-700 py-3 rounded font-medium hover:bg-gray-50"
+                >
+                  Назад
+                </button>
+                <button
+                    onClick={handlePrint}
+                    className="flex-1 bg-orange-500 text-white py-3 rounded font-medium hover:bg-orange-600"
+                >
+                  🖨️ Печать
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <div className="print-only hidden">
+            <Badge {...printData} />
+          </div>
+        </>
+    );
   }
 
   return (
@@ -118,9 +170,9 @@ export default function RegistrationForm() {
           <button
               type="submit"
               disabled={isPending}
-              className="w-full bg-gray-900 text-white py-2.5 rounded font-medium hover:bg-gray-800 disabled:opacity-50 transition"
+              className="w-full bg-gray-900 text-white py-3 rounded font-medium hover:bg-gray-800 disabled:opacity-50 transition"
           >
-            {isPending ? "Сохраняю..." : "Зарегистрировать и распечатать"}
+            {isPending ? "Сохраняю..." : "Зарегистрировать"}
           </button>
         </form>
       </section>
