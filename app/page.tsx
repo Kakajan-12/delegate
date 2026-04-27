@@ -19,7 +19,7 @@ export default async function Home() {
         {/*</div>*/}
       </header>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="">
         <RegistrationForm />
         {/*<ParticipantsList participants={participants} />*/}
       </div>
