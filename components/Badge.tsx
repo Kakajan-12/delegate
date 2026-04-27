@@ -44,7 +44,7 @@ export default function Badge({ firstName, lastName, company, phone, email }: Pr
                         wordBreak: "break-word",
                     }}
                 >
-                    {firstName || "Имя"}
+                    {firstName || "First name"}
                 </div>
             </div>
 
@@ -72,7 +72,7 @@ export default function Badge({ firstName, lastName, company, phone, email }: Pr
                         wordBreak: "break-word",
                     }}
                 >
-                    {lastName || "Фамилия"}
+                    {lastName || "Last name"}
                 </div>
             </div>
 

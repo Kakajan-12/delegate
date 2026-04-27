@@ -11,17 +11,17 @@ export default async function Home() {
     <main className="max-w-6xl mx-auto p-6">
       <header className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold">Регистрация участников</h1>
-          <p className="text-sm text-gray-500">Conf 2026</p>
+          <h1 className="text-2xl font-semibold">Registration of participants</h1>
+          <p className="text-sm text-gray-500">Turkmen-Chinese</p>
         </div>
-        <div className="text-sm text-gray-500">
-          Зарегистрировано: <span className="font-medium text-gray-900">{participants.length}</span>
-        </div>
+        {/*<div className="text-sm text-gray-500">*/}
+        {/*  Зарегистрировано: <span className="font-medium text-gray-900">{participants.length}</span>*/}
+        {/*</div>*/}
       </header>
 
       <div className="grid lg:grid-cols-2 gap-8">
         <RegistrationForm />
-        <ParticipantsList participants={participants} />
+        {/*<ParticipantsList participants={participants} />*/}
       </div>
     </main>
   );

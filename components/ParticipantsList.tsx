@@ -31,7 +31,7 @@ export default function ParticipantsList({ participants }: { participants: Parti
   }
 
   function exportCsv() {
-    const rows = [["Имя", "Фамилия", "Компания", "Телефон", "Email", "Дата"]];
+    const rows = [["First name", "Last name", "Company", "Phone", "Email", "Date"]];
     participants.forEach((p) => {
       rows.push([
         p.first_name,
@@ -63,7 +63,7 @@ export default function ParticipantsList({ participants }: { participants: Parti
   return (
       <section className="bg-white rounded-lg border border-gray-200 p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-medium">Участники</h2>
+          <h2 className="text-lg font-medium">Participants</h2>
           <button
               onClick={exportCsv}
               className="text-sm px-3 py-1.5 border border-gray-300 rounded hover:bg-gray-50"

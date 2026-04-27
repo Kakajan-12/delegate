@@ -33,7 +33,7 @@ export default function RegistrationForm() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!firstName.trim() || !lastName.trim()) {
-      alert("Заполните имя и фамилию");
+      alert("Fill in your first and last name");
       return;
     }
     const data = {
@@ -66,7 +66,7 @@ export default function RegistrationForm() {
         <>
           <section className="bg-white rounded-lg border border-gray-200 p-6 no-print">
             <div className="flex flex-col items-center gap-4">
-              <h2 className="text-lg font-medium">Готово к печати</h2>
+              <h2 className="text-lg font-medium">Print ready.</h2>
               <div className="bg-gray-50 p-4 rounded">
                 <Badge {...printData} />
               </div>
@@ -75,13 +75,13 @@ export default function RegistrationForm() {
                     onClick={handleBack}
                     className="flex-1 border border-gray-300 text-gray-700 py-3 rounded font-medium hover:bg-gray-50"
                 >
-                  Назад
+                  Back
                 </button>
                 <button
                     onClick={handlePrint}
                     className="flex-1 bg-orange-500 text-white py-3 rounded font-medium hover:bg-orange-600"
                 >
-                  🖨️ Печать
+                  🖨️ Print
                 </button>
               </div>
             </div>
