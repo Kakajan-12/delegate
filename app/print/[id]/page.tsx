@@ -11,7 +11,7 @@ export default async function PrintPage({ params }: { params: Promise<{ id: stri
     if (!p) notFound();
 
     return (
-        <div className="min-h-screen p-8 bg-gray-100 flex items-center justify-center">
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center pt-24 p-8">
             <PrintTrigger />
             <div className="print-area">
                 <Badge

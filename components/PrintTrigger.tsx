@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
-
 export default function PrintTrigger() {
-  useEffect(() => {
-    const t = setTimeout(() => window.print(), 300);
-    return () => clearTimeout(t);
-  }, []);
-  return null;
+  return (
+      <div className="no-print fixed top-0 left-0 right-0 z-50 flex justify-center p-4 bg-white border-b border-gray-200">
+        <button
+            onClick={() => window.print()}
+            className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-8 py-3 rounded-lg shadow-md text-lg"
+        >
+          🖨️ Печать
+        </button>
+      </div>
+  );
 }
